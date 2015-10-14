@@ -1,4 +1,3 @@
-
 require 'docking_station'
 
 # docking_station = DockingStation.new
@@ -23,7 +22,7 @@ describe DockingStation do
       expect(subject.bikes[-1]).to eq bike
     end
     it 'does not raise an error when docking below capacity' do
-      19.times do
+      (DockingStation::DEFAULT_CAPACITY - 1).times do
           bike = Bike.new
           subject.dock(bike)
         end
@@ -34,7 +33,7 @@ describe DockingStation do
 
 
     it 'raises an error when docking at capacity' do
-      expect { 21.times do
+      expect { (DockingStation::DEFAULT_CAPACITY + 1).times do
           bike = Bike.new
           subject.dock(bike)
         end
