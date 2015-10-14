@@ -1,33 +1,22 @@
 class DockingStation
 
-attr_reader :bike
+  attr_reader :bike
 
-def initialise
-end
+  def initialise
+  end
 
-def release_bike
-  Bike.new
-end
+  def release_bike
+    raise "No bikes available" unless @bike
+    @bike
+  end
 
-def dock(bike)
-  @bike = bike
-end
+  def available?
+    false
+  end
 
-# def bike
-#   @bike
-# end
-
-
-end
-
-class Bike
-
-attr_accessor
-
-def initialise
-end
-
-def working?
-end
+  def dock(bike)
+    @bike = bike
+  end
 
 end
+
