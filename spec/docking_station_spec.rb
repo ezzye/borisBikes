@@ -8,11 +8,11 @@ require 'docking_station'
 describe DockingStation do
   it { is_expected.to(respond_to(:release_bike)) }
   it { is_expected.to(respond_to(:dock).with(1).argument) }
-  it { is_expected.to(respond_to(:bike)) }
+  it { is_expected.to(respond_to(:bikes)) }
 
   it 'docks something' do
     bike = Bike.new
-    expect(subject.dock(bike)).to eq bike
+    expect(subject.dock(bike)[-1]).to eq bike
   end
 
 
@@ -20,16 +20,26 @@ describe DockingStation do
     it 'returns docked bikes' do
       bike = Bike.new
       subject.dock(bike)
-      expect(subject.bike).to eq bike
+      expect(subject.bikes[-1]).to eq bike
     end
-
-    it 'raises an error when docking at capacity' do
-      expect { 2.times do
+    it 'does not raise an error when docking below capacity' do
+      19.times do
           bike = Bike.new
           subject.dock(bike)
         end
-      }.to raise_error "Docking station full"
+        bike = Bike.new
+        subject.dock(bike)
+      expect(subject.bikes[-1]).to eq bike
     end
+
+
+    # it 'raises an error when docking at capacity' do
+    #   expect { 21.times do
+    #       bike = Bike.new
+    #       subject.dock(bike)
+    #     end
+    #   }.to raise_error "Docking station full"
+    # end
 
   end
 
