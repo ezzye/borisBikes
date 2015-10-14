@@ -1,0 +1,33 @@
+Nouns = bike, docking station
+Verb = dock bike
+
+Nouns = docking station, bike
+Verb = see a docked bike
+
+
+Objects = DockingStation, Bike
+Messages = "dock bike", "is there a docked bike?"
+
+
+Bike ----> dock ----> DockingStation
+Person -----> is bike docked ----> DockingStation
+
+
+Full test
+
+create instance of docking station
+
+docking station created with bike
+
+bike obtained by releasing from docking station
+
+therefore bike must be an instance variable of docking station ( @bike = number of bikes? or @bike = true?   or bike instance stored in docking station?)
+
+bike is docked by docking at a docking station the opposite of releasing.
+
+User can check if bike docked.
+
+
+
+
+
