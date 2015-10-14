@@ -33,13 +33,13 @@ describe DockingStation do
     end
 
 
-    # it 'raises an error when docking at capacity' do
-    #   expect { 21.times do
-    #       bike = Bike.new
-    #       subject.dock(bike)
-    #     end
-    #   }.to raise_error "Docking station full"
-    # end
+    it 'raises an error when docking at capacity' do
+      expect { 21.times do
+          bike = Bike.new
+          subject.dock(bike)
+        end
+      }.to raise_error "Docking station full"
+    end
 
   end
 
